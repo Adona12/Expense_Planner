@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class NewTransaction extends StatefulWidget {
@@ -52,7 +50,7 @@ void submitData(){
           ),
           FlatButton(
             child: Text("Add Transaction"),
-            textColor: Colors.purple,
+            textColor: Theme.of(context).primaryColor,
             onPressed: submitData,
 
           ),

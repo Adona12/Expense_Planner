@@ -10,7 +10,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Personal Expenses',
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+        accentColor: Colors.amber,
+        fontFamily: "OpenSans",
+        textTheme: ThemeData.light().textTheme.copyWith(
+              title: TextStyle(
+                fontFamily: "Quicksand",
+                fontSize: 18,
+              ),
+            ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                title: TextStyle(
+                  fontFamily: "Quicksand",
+                  fontSize: 20,
+                ),
+              ),
+        ),
+      ),
       home: MyHomePage(),
     );
   }
@@ -23,13 +42,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-        id: "t1", amount: 69.99, title: "New shoes", date: DateTime.now()),
-    Transaction(
-        id: "t2",
-        amount: 16.75,
-        title: "weekly Groceries",
-        date: DateTime.now()),
+//    Transaction(
+//        id: "t1", amount: 69.99, title: "New shoes", date: DateTime.now()),
+//    Transaction(
+//        id: "t2",
+//        amount: 16.75,
+//        title: "weekly Groceries",
+//        date: DateTime.now()),
   ];
 
   void _addTransaction(String txTitle, double txAmount) {
@@ -47,7 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
     showModalBottomSheet(
         context: ctx,
         builder: (_) {
-          return GestureDetector( onTap: (){},
+          return GestureDetector(
+            onTap: () {},
             child: NewTransaction(_addTransaction),
             behavior: HitTestBehavior.opaque,
           );
@@ -58,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter app"),
+        title: Text("Personal Expenses"),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
@@ -70,6 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+
             Container(
               child: Card(
                 elevation: 5,
