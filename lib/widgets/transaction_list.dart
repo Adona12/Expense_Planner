@@ -52,9 +52,9 @@ class TransactionList extends StatelessWidget {
                         transactions[index].title,
                         style: Theme.of(context).textTheme.title,
                       ),
-                      subtitle: Text("jun 7 2020"),
+                      subtitle: Text( '${transactions[index].date.day}/${transactions[index].date.month}/${transactions[index].date.year}'),
                       trailing: IconButton(
-                        icon: Icon(Icons.delete,color: Colors.red,),
+                        icon: Icon(Icons.delete,color: Theme.of(context).errorColor,),
                         onPressed: () {},
 
                       ),
