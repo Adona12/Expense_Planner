@@ -17,23 +17,19 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.amber,
         fontFamily: "OpenSans",
         textTheme: ThemeData.light().textTheme.copyWith(
-              title: TextStyle(
-                fontFamily: "Quicksand",
-                fontSize: 18,fontWeight: FontWeight.bold,
-
-              ),
-          button: TextStyle(
-            color: Colors.white,
-          )
+            title: TextStyle(
+              fontFamily: "Quicksand",
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
-
+            button: TextStyle(
+              color: Colors.white,
+            )),
         appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(
                 title: TextStyle(
                   fontFamily: "Quicksand",
                   fontSize: 20,
-                  
-                  
                 ),
               ),
         ),
@@ -51,15 +47,50 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
     Transaction(
-        id: "t1", amount: 69.99, title: "New shoes", date: DateTime.now().subtract(Duration(days: 1))),
+      id: "t1",
+      amount: 69.99,
+      title: "New shoes",
+      date: DateTime.now().subtract(
+        Duration(days: 3),
+      ),
+    ),
     Transaction(
-        id: "t2",
+      id: "t2",
+      amount: 49.99,
+      title: "New shirt",
+      date: DateTime.now().subtract(
+        Duration(days: 2),
+      ),
+    ),
+    Transaction(
+      id: "t3",
+      amount: 73.99,
+      title: "New Bag",
+      date: DateTime.now()
+
+    ),
+    Transaction(
+      id: "t4",
+      amount: 9.99,
+      title: "ear phones",
+      date: DateTime.now().subtract(
+        Duration(days: 1),
+      ),
+    ),
+    Transaction(
+      id: "t5",
+      amount: 39.99,
+      title: "blue jeans",
+      date: DateTime.now()
+    ),
+    Transaction(
+        id: "t5",
         amount: 16.75,
         title: "weekly Groceries",
         date: DateTime.now()),
   ];
 
-  void _addTransaction(String txTitle, double txAmount,DateTime txDate) {
+  void _addTransaction(String txTitle, double txAmount, DateTime txDate) {
     final newTransaction = Transaction(
         title: txTitle,
         date: txDate,
@@ -67,6 +98,12 @@ class _MyHomePageState extends State<MyHomePage> {
         id: DateTime.now().toString());
     setState(() {
       _userTransactions.add(newTransaction);
+    });
+  }
+
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((transaction) => transaction.id == id);
     });
   }
 
@@ -99,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Chart(_userTransactions),
-            TransactionList(_userTransactions)
+            TransactionList(_userTransactions, _deleteTransaction)
           ],
         ),
       ),
