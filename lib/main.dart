@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import './model/transaction.dart';
 import './widgets/new_transactions.dart';
+import './widgets/Chart.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
         textTheme: ThemeData.light().textTheme.copyWith(
               title: TextStyle(
                 fontFamily: "Quicksand",
-                fontSize: 18,
+                fontSize: 18,fontWeight: FontWeight.bold,
+
               ),
             ),
         appBarTheme: AppBarTheme(
@@ -26,6 +28,8 @@ class MyApp extends StatelessWidget {
                 title: TextStyle(
                   fontFamily: "Quicksand",
                   fontSize: 20,
+                  
+                  
                 ),
               ),
         ),
@@ -42,13 +46,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-//    Transaction(
-//        id: "t1", amount: 69.99, title: "New shoes", date: DateTime.now()),
-//    Transaction(
-//        id: "t2",
-//        amount: 16.75,
-//        title: "weekly Groceries",
-//        date: DateTime.now()),
+    Transaction(
+        id: "t1", amount: 6999999.99, title: "New shoes", date: DateTime.now().subtract(Duration(days: 1))),
+    Transaction(
+        id: "t2",
+        amount: 16.75,
+        title: "weekly Groceries",
+        date: DateTime.now()),
   ];
 
   void _addTransaction(String txTitle, double txAmount) {
@@ -90,16 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-
-            Container(
-              child: Card(
-                elevation: 5,
-                color: Colors.blue,
-                child: Text(
-                  "Chart",
-                ),
-              ),
-            ),
+            Chart(_userTransactions),
             TransactionList(_userTransactions)
           ],
         ),

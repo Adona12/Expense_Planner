@@ -28,52 +28,36 @@ class TransactionList extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  
                 ],
               )
             : ListView.builder(
                 itemCount: transactions.length,
                 itemBuilder: (ctx, index) {
                   return Card(
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            '\$${transactions[index].amount}',
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
+                    elevation: 5,
+                    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+                    child: ListTile(
+                   
+                      leading: CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Theme.of(context).primaryColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(6),
+                          child: FittedBox(
+                            child: Text('\$${transactions[index].amount}'),
                           ),
-                          margin: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 15,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          ),
-                          padding: EdgeInsets.all(10),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              transactions[index].title,
-                              style: Theme.of(context).textTheme.title,
-                            ),
-                            Text(
-                              "June 7 2020",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
+                      ),
+                      title: Text(
+                        transactions[index].title,
+                        style: Theme.of(context).textTheme.title,
+                      ),
+                      subtitle: Text("jun 7 2020"),
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete,color: Colors.red,),
+                        onPressed: () {},
+
+                      ),
                     ),
                   );
                 },
