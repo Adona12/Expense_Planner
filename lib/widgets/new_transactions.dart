@@ -84,7 +84,7 @@ class _NewTransactionState extends State<NewTransaction> {
             onPressed: _submitData,
           ),
         ],
-      ),
+        ),
     );
   }
 }
