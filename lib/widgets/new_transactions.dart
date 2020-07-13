@@ -85,12 +85,12 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
               Platform.isIOS
                   ? CupertinoButton(
-                      child: Text("Add Transaction"),
+                      child: const Text("Add Transaction"),
                       color: Theme.of(context).primaryColor,
                       onPressed: _submitData,
                     )
                   : RaisedButton(
-                      child: Text("Add Transaction"),
+                      child:const Text("Add Transaction"),
                       color: Theme.of(context).primaryColor,
                       textColor: Theme.of(context).textTheme.button.color,
                       onPressed: _submitData,
