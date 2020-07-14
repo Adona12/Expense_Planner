@@ -5,13 +5,39 @@ import 'package:flutter/material.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTransaction;
-  NewTransaction(this.addTransaction);
+  NewTransaction(this.addTransaction){
+    print("new transaction constructor");
+  }
 
   @override
-  _NewTransactionState createState() => _NewTransactionState();
+  _NewTransactionState createState(){
+    print("create state of new transaction");
+    return _NewTransactionState();
+  }
 }
 
 class _NewTransactionState extends State<NewTransaction> {
+
+  _NewTransactionState(){
+    print("new transactionstate constructor");
+  }
+  @override
+  void didUpdateWidget(NewTransaction oldWidget) {
+    // TODO: implement didUpdateWidget
+    print("did update()");
+    super.didUpdateWidget(oldWidget);
+  }
+  @override
+  void dispose() {
+    print("dispose");
+    // TODO: implement dispose
+    super.dispose();
+  }
+@override
+  void initState() {
+    print("initialized state");
+    super.initState();
+  }
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime _selectedDate;
